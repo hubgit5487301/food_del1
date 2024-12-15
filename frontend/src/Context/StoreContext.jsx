@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-const newurl = process.env.origin
 
 export const StoreContext = createContext(null)
 
