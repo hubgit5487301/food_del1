@@ -34,7 +34,7 @@ app.use(express.json());
   methods: ['GET', 'POST'], // Allowed methods (adjust as needed)
 }));
 
-
+*/
 
 // db connection
 connectDB();
