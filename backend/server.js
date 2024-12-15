@@ -7,10 +7,8 @@ import 'dotenv/config';
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import path from 'path';  // Using import now
-const origin = process.env.origin;
-console.log(origin)
-
-const allowedOrigins = ['https://food-del1-xf99.onrender.com'];
+const origin = process.env.ORIGIN
+const allowedOrigins = [origin];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -30,7 +28,7 @@ const port = 4000;
 
 
 app.use(express.json());
-
+app.use(cors(corsOptions));
 /*app.use(cors({
   origin: origin , // React frontend URL
   methods: ['GET', 'POST'], // Allowed methods (adjust as needed)
