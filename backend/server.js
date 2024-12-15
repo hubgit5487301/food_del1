@@ -7,20 +7,8 @@ import 'dotenv/config';
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import path from 'path';  // Using import now
-//const origin = process.env.ORIGIN
-//const allowedOrigins = [origin];
-/*
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); // Allow the request
-    } else {
-      callback(new Error('Not allowed by CORS')); // Reject the request
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
-  credentials: true, // Allow credentials (cookies, HTTP authentication, etc.)
-};
+const origin = process.env.ORIGIN
+
 // app config*/
 const app = express();
 const port = 4000;
@@ -31,14 +19,9 @@ app.use(express.json());
 //app.use(cors(corsOptions));
 app.use(cors({
   
-  origin: 'http://localhhost:5173' , // React frontend URL
-  methods: ['GET', 'POST'], // Allowed methods (adjust as needed)
-}))
-/*app.use(cors({
   origin: origin , // React frontend URL
   methods: ['GET', 'POST'], // Allowed methods (adjust as needed)
-}));
-*/
+}))
 
 
 // db connection
@@ -55,7 +38,7 @@ app.use("/api/order", orderRouter);
 
 // Set up path for the frontend's dist folder
 //const frontendDistPath = path.resolve(__dirname, '../frontend/dist');
-const frontendDistPath = 'dist'
+const frontendDistPath = path.resolve('dist');
 
 // Ensure the path is correctly resolved for serving the static files
 app.use(express.static(frontendDistPath));
