@@ -8,6 +8,7 @@ import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import path from 'path';  // Using import now
 const origin = process.env.origin;
+console.log(origin)
 // app config
 const app = express();
 const port = 4000;
@@ -16,7 +17,7 @@ const port = 4000;
 
 app.use(express.json());
 app.use(cors({
-  origin: origin, // React frontend URL
+  origin: origin , // React frontend URL
   methods: ['GET', 'POST'], // Allowed methods (adjust as needed)
 }));
 
