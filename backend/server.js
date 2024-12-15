@@ -9,6 +9,20 @@ import orderRouter from "./routes/orderRoute.js";
 import path from 'path';  // Using import now
 const origin = process.env.origin;
 console.log(origin)
+
+const allowedOrigins = ['https://food-del1-xf99.onrender.com'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error('Not allowed by CORS')); // Reject the request
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
+  credentials: true, // Allow credentials (cookies, HTTP authentication, etc.)
+};
 // app config
 const app = express();
 const port = 4000;
@@ -16,11 +30,12 @@ const port = 4000;
 
 
 app.use(express.json());
-app.use(cors({
+
+/*app.use(cors({
   origin: origin , // React frontend URL
   methods: ['GET', 'POST'], // Allowed methods (adjust as needed)
 }));
-
+*/
 
 
 // db connection
