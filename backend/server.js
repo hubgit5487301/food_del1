@@ -7,17 +7,20 @@ import 'dotenv/config';
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import path from 'path';  // Using import now
-
+const origin = process.env.origin;
 // app config
 const app = express();
 const port = 4000;
 
-// middlewares
+
+
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:5137', // React frontend URL
+  origin: origin, // React frontend URL
   methods: ['GET', 'POST'], // Allowed methods (adjust as needed)
 }));
+
+
 
 // db connection
 connectDB();
@@ -30,7 +33,6 @@ app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 
 // Resolve the __dirname for ES modules
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 // Set up path for the frontend's dist folder
 //const frontendDistPath = path.resolve(__dirname, '../frontend/dist');
