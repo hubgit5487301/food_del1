@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       // When the React app calls /api, proxy the request to the backend
-      '/api': url,
+      '/api': 'https://food-del1-t73r.onrender.com',
       // You can add additional proxies for other API routes here
       // '/another-api': 'http://localhost:4001',
     }
