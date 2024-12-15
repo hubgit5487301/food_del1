@@ -1,12 +1,13 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+const frontendurl = import.meta.env.VITE_API_URL;
 
 export const StoreContext = createContext(null)
 
 const StoreContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
-    const url = "https://food-del1-t73r.onrender.com"
+    const url = frontendurl
     const [token,setToken] = useState("");
     const [food_list,setFoodList] = useState([])
 
