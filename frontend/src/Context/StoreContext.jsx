@@ -2,6 +2,8 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 const frontendurl = import.meta.env.VITE_API_URL;
 
+console.log(frontendurl);
+
 export const StoreContext = createContext(null)
 
 const StoreContextProvider = (props) => {
@@ -50,6 +52,7 @@ const StoreContextProvider = (props) => {
 
         const fetchFoodList = async () => {
                 const response = await axios.get(url+"/api/food/list");
+                console.log(frontendurl);
                 setFoodList(response.data.data)
              }
 
