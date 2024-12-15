@@ -7,9 +7,9 @@ import 'dotenv/config';
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import path from 'path';  // Using import now
-const origin = process.env.ORIGIN
-const allowedOrigins = [origin];
-
+//const origin = process.env.ORIGIN
+//const allowedOrigins = [origin];
+/*
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -21,14 +21,19 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
   credentials: true, // Allow credentials (cookies, HTTP authentication, etc.)
 };
-// app config
+// app config*/
 const app = express();
 const port = 4000;
 
 
 
 app.use(express.json());
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
+app.use(cors({
+  
+  origin: 'http://localhhost:5173' , // React frontend URL
+  methods: ['GET', 'POST'], // Allowed methods (adjust as needed)
+}))
 /*app.use(cors({
   origin: origin , // React frontend URL
   methods: ['GET', 'POST'], // Allowed methods (adjust as needed)
