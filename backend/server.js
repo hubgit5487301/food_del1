@@ -9,7 +9,7 @@ import orderRouter from "./routes/orderRoute.js";
 import path from 'path';  // Using import now
 const origin = process.env.origin;
 console.log(origin)
-
+/*
 const allowedOrigins = ['https://food-del1-xf99.onrender.com'];
 
 const corsOptions = {
@@ -27,15 +27,15 @@ const corsOptions = {
 const app = express();
 const port = 4000;
 
-
+*/
 
 app.use(express.json());
 
-/*app.use(cors({
+app.use(cors({
   origin: origin , // React frontend URL
   methods: ['GET', 'POST'], // Allowed methods (adjust as needed)
 }));
-*/
+
 
 
 // db connection
