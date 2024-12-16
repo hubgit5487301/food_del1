@@ -38,11 +38,13 @@ app.use("/api/order", orderRouter);
 
 // Set up path for the frontend's dist folder
 //const frontendDistPath = path.resolve(__dirname, '../frontend/dist');
-const frontendDistPath = path.resolve('..','frontend','dist');
-const adminpath = path.resolve('..','admin','dist')
+const frontendDistPath = path.resolve('dist');
+const adminpath = path.resolve('dist_admin')
 
 // Ensure the path is correctly resolved for serving the static files
 app.use(express.static(frontendDistPath));
+
+app.use('/backend/dist_admin', express.static(adminpath));
 
 // All other routes should serve the React app's index.html for React Router to work
 app.get('/api', (req, res) => {
