@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-const frontendurl = import.meta.env.VITE_API_URL;
-//const frontendurl = 'http://localhost:4000';
+//const frontendurl = import.meta.env.VITE_API_URL;
+const frontendurl = 'https://food-del1-1.onrender.com';
 console.log(frontendurl);
 
 export const StoreContext = createContext(null)
