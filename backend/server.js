@@ -46,19 +46,20 @@ app.use(express.static(frontendDistPath));
 
 app.use('/backend/dist_admin', express.static(adminpath));
 
-// All other routes should serve the React app's index.html for React Router to work
-app.get('/api', (req, res) => {
-  // Make sure the path is absolute
-  const indexPath = path.resolve(frontendDistPath, 'index.html');
-  res.sendFile(indexPath);  // Send the absolute path to index.html
-});
-
 app.get('/add', (req, res) => {
   // Make sure the path is absolute
   const indexPath = path.resolve(adminpath, 'index.html');
   console.log(indexPath)
   res.sendFile(indexPath);  // Send the absolute path to index.html
 });
+// All other routes should serve the React app's index.html for React Router to work
+app.get('*', (req, res) => {
+  // Make sure the path is absolute
+  const indexPath = path.resolve(frontendDistPath, 'index.html');
+  res.sendFile(indexPath);  // Send the absolute path to index.html
+});
+
+
 
 app.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`);
