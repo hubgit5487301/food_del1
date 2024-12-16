@@ -15,12 +15,12 @@ const port = 4000;
 
 
 app.use(express.json());
-//app.use(cors(corsOptions));
+app.use(cors());/*
 app.use(cors({
   
   origin: origin , // React frontend URL
   methods: ['GET', 'POST'], // Allowed methods (adjust as needed)
-}))
+}))*/
 
 
 // db connection
