@@ -38,15 +38,23 @@ app.use("/api/order", orderRouter);
 
 // Set up path for the frontend's dist folder
 //const frontendDistPath = path.resolve(__dirname, '../frontend/dist');
-const frontendDistPath = path.resolve('dist');
+const frontendDistPath = path.resolve('..','frontend','dist');
+const adminpath = path.resolve('..','admin','dist')
 
 // Ensure the path is correctly resolved for serving the static files
 app.use(express.static(frontendDistPath));
 
 // All other routes should serve the React app's index.html for React Router to work
-app.get('*', (req, res) => {
+app.get('/api', (req, res) => {
   // Make sure the path is absolute
   const indexPath = path.resolve(frontendDistPath, 'index.html');
+  res.sendFile(indexPath);  // Send the absolute path to index.html
+});
+
+app.get('/add', (req, res) => {
+  // Make sure the path is absolute
+  const indexPath = path.resolve(adminpath, 'index.html');
+  console.log(indexPath)
   res.sendFile(indexPath);  // Send the absolute path to index.html
 });
 
